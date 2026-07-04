@@ -185,7 +185,7 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 62%; /* keep the stage & people in frame, not the sky */
   will-change: transform;
 }
 
