@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Thanh Hiếu — MC · Speaker · Runner
+   Tokens + base
+   ========================================================================== */
+
+:root {
+  --bg: #0A0A0A;
+  --surface: #141414;
+  --ink: #F5F5F5;
+  --ink-dim: #8A8A8A;
+  --volt: #C8FF00;
+  --line: #262626;
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Be Vietnam Pro", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "Consolas", monospace;
+
+  --header-h: 64px;
+  --pad-x: clamp(20px, 5vw, 72px);
+  --section-gap: clamp(88px, 12vw, 160px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.08; /* Vietnamese caps carry stacked diacritics — never tighter */
+}
+
+::selection { background: var(--volt); color: #0A0A0A; }
+
+:focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; }
+
+/* --- KM marker: race-course milestone, the page's structural signature --- */
+.km-marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-dim);
+}
+.km-marker .km-num {
+  color: #0A0A0A;
+  background: var(--volt);
+  padding: 3px 10px;
+  font-weight: 700;
+}
+.km-marker .km-label { color: var(--ink); }
+
+/* --- image fallback (shown until real photo is dropped in) --- */
+.img-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 22px, rgba(200, 255, 0, 0.04) 22px 44px),
+    linear-gradient(160deg, #161616, #0d0d0d);
+  border: 1px dashed rgba(200, 255, 0, 0.35);
+  color: var(--ink-dim);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 16px;
+}
+.img-fallback strong { color: var(--volt); font-weight: 400; }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: var(--header-h);
+  padding: 0 var(--pad-x);
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--volt);
+  letter-spacing: 0.04em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.site-nav a {
+  position: relative;
+  padding: 4px 0;
+  color: var(--ink-dim);
+  transition: color 0.2s;
+}
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 2px;
+  background: var(--volt);
+  transition: right 0.25s ease;
+}
+.site-nav a:hover, .site-nav a.is-active { color: var(--ink); }
+.site-nav a:hover::after, .site-nav a.is-active::after { right: 0; }
+
+.site-nav .nav-cta {
+  color: var(--volt);
+  border: 1px solid var(--volt);
+  padding: 4px 14px;
+}
+.site-nav .nav-cta:hover { background: var(--volt); color: #0A0A0A; }
+.site-nav .nav-cta::after { display: none; }
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--line);
+}
+.lang-btn {
+  background: none;
+  border: 0;
+  color: var(--ink-dim);
+  font: 700 0.75rem var(--font-mono);
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.lang-btn.is-active { background: var(--volt); color: #0A0A0A; }
+
+/* ==========================================================================
+   Hero — KM 00
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.hero-img,
+.hero .img-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  will-change: transform;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.25) 100%);
+}
+
+.hero-content {
+  padding: 0 var(--pad-x) clamp(96px, 14vh, 150px);
+  width: 100%;
+}
+
+.hero-name {
+  /* poster crop: the name is bigger than the frame wants to allow */
+  font-size: clamp(4.2rem, 17vw, 13rem);
+  letter-spacing: 0.01em;
+  margin: 18px 0 10px -0.04em;
+}
+
+.hero-roles {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.32em;
+  color: var(--volt);
+}
+.hero-roles .dot { color: var(--ink-dim); }
+
+.hero-sub {
+  margin-top: 14px;
+  max-width: 34ch;
+  color: var(--ink-dim);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+}
+
+.scroll-cue {
+  position: absolute;
+  right: var(--pad-x);
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--ink-dim);
+  writing-mode: vertical-rl;
+}
+.scroll-cue-line {
+  width: 1px;
+  height: 44px;
+  background: var(--volt);
+  animation: cue-pulse 1.6s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes cue-pulse {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.4; }
+  50%      { transform: scaleY(1);   opacity: 1; }
+}
+
+/* ==========================================================================
+   Marquee — start-corral banner
+   ========================================================================== */
+
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--volt);
+  color: #0A0A0A;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.9rem);
+  text-transform: uppercase;
+  padding: 12px 0;
+}
+.marquee-group span { padding: 0 28px; }
+.marquee-group i { font-style: normal; font-size: 0.8em; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   Responsive + reduced motion
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .site-nav { display: none; } /* one-page site: hero CTA + scroll carries mobile nav */
+  .site-header { gap: 12px; }
+  .lang-switch { margin-left: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .scroll-cue-line { animation: none; }
+}
