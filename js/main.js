@@ -233,6 +233,48 @@ function initLightbox() {
   });
 }
 
+/* --- Hero parallax ---------------------------------------------------------- */
+function initParallax() {
+  if (REDUCED_MOTION) return;
+  const heroImg = document.querySelector(".hero-img, .hero .img-fallback");
+  if (!heroImg) return;
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) heroImg.style.transform = "translateY(" + y * 0.25 + "px)";
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+}
+
+/* --- Active nav highlight --------------------------------------------------- */
+function initActiveNav() {
+  const links = Array.from(document.querySelectorAll(".site-nav a"));
+  const sections = links
+    .map((a) => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+  if (!("IntersectionObserver" in window) || !sections.length) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((a) =>
+          a.classList.toggle("is-active", a.getAttribute("href") === "#" + entry.target.id)
+        );
+      });
+    },
+    { rootMargin: "-40% 0px -55% 0px" }
+  );
+  sections.forEach((s) => io.observe(s));
+}
+
 /* --- Contact buttons ------------------------------------------------------- */
 function initContactLinks() {
   const set = (id, href) => {
@@ -257,4 +299,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initCounters();
   initLightbox();
   initContactLinks();
+  initParallax();
+  initActiveNav();
 });
