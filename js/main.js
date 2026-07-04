@@ -47,6 +47,20 @@ const I18N = {
     "passions.pickle.desc": "Nơi phản xạ nhanh gặp niềm vui kết nối — môn thể thao của những cuộc gặp gỡ mới.",
     "gallery.km": "KHOẢNH KHẮC",
     "gallery.title": "Những khung hình đáng nhớ",
+    "services.km": "ĐỒNG HÀNH CÙNG BẠN",
+    "services.title": "Tôi có thể tiếp lửa cho sự kiện của bạn",
+    "services.mc.title": "MC sự kiện",
+    "services.mc.desc": "Lễ khai trương, year-end party, hội nghị, gala — dẫn dắt chương trình với năng lượng khiến khán phòng không ai muốn xem điện thoại.",
+    "services.speaker.title": "Diễn giả truyền động lực",
+    "services.speaker.desc": "Chia sẻ về kỷ luật, sức bền và tư duy tích cực — những bài học thật từ đường chạy, kể bằng ngôn ngữ của sân khấu.",
+    "services.host.title": "Host giải chạy & sự kiện thể thao",
+    "services.host.desc": "MC hiểu vận động viên vì chính mình là vận động viên — giữ lửa từ vạch xuất phát đến người về đích cuối cùng.",
+    "contact.km": "VỀ ĐÍCH",
+    "contact.title1": "Cùng tạo nên một sự kiện",
+    "contact.title2": "bùng nổ?",
+    "contact.sub": "Nhắn tôi một tin — chúng ta sẽ bắt đầu từ ý tưởng của bạn.",
+    "contact.call": "Gọi điện",
+    "footer.tag": "Cứ chạy rồi sẽ tới.",
   },
   en: {
     "logo": "TH.",
@@ -81,6 +95,20 @@ const I18N = {
     "passions.pickle.desc": "Where fast reflexes meet the joy of connection — the sport of new friendships.",
     "gallery.km": "MOMENTS",
     "gallery.title": "Frames worth remembering",
+    "services.km": "LET'S WORK TOGETHER",
+    "services.title": "I can fuel your event",
+    "services.mc.title": "Event MC",
+    "services.mc.desc": "Grand openings, year-end parties, conferences, galas — hosted with an energy that keeps every phone in every pocket.",
+    "services.speaker.title": "Motivational speaker",
+    "services.speaker.desc": "Talks on discipline, endurance and positive thinking — real lessons from the road, told in the language of the stage.",
+    "services.host.title": "Race & sports event host",
+    "services.host.desc": "An MC who understands athletes because he is one — keeping the fire alive from the starting gun to the very last finisher.",
+    "contact.km": "FINISH LINE",
+    "contact.title1": "Let's create an event that",
+    "contact.title2": "explodes?",
+    "contact.sub": "Send me a message — we'll start from your idea.",
+    "contact.call": "Call me",
+    "footer.tag": "Keep running, you'll get there.",
   },
 };
 
@@ -205,6 +233,22 @@ function initLightbox() {
   });
 }
 
+/* --- Contact buttons ------------------------------------------------------- */
+function initContactLinks() {
+  const set = (id, href) => {
+    const el = document.getElementById(id);
+    if (el) el.href = href;
+  };
+  set("btn-phone", "tel:" + CONTACT.phone);
+  set("btn-zalo", "https://zalo.me/" + CONTACT.zalo);
+  set("btn-messenger", CONTACT.messenger);
+  set("btn-email", "mailto:" + CONTACT.email);
+  set("link-facebook", CONTACT.facebook);
+
+  const year = document.getElementById("footer-year");
+  if (year) year.textContent = new Date().getFullYear();
+}
+
 /* --- boot ---------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   initLangSwitch();
@@ -212,4 +256,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveals();
   initCounters();
   initLightbox();
+  initContactLinks();
 });

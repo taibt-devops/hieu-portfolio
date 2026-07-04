@@ -465,6 +465,98 @@ h1, h2, h3 {
 .gallery-item:hover img { transform: scale(1.05); filter: brightness(1.08); }
 
 /* ==========================================================================
+   Services — KM 35
+   ========================================================================== */
+
+.services-list { margin-top: 30px; border-top: 1px solid var(--line); }
+
+.service {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: clamp(24px, 4vw, 40px) 0;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.25s;
+}
+.service:hover { border-bottom-color: var(--volt); }
+
+.service-idx {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--volt);
+  line-height: 1;
+}
+
+.service h3 { font-size: clamp(1.3rem, 2.6vw, 1.8rem); margin-bottom: 8px; }
+.service p { color: var(--ink-dim); max-width: 62ch; }
+
+/* ==========================================================================
+   Contact — KM 42 (finish line)
+   ========================================================================== */
+
+.contact { text-align: center; padding-bottom: var(--section-gap); }
+.contact .km-marker { justify-content: center; }
+
+.contact-cta {
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  margin: 24px auto 16px;
+  max-width: 14ch;
+}
+.contact-cta .volt { color: var(--volt); }
+
+.contact-sub { color: var(--ink-dim); }
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.contact-btn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  padding: 14px 30px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.contact-btn:hover {
+  background: var(--volt);
+  border-color: var(--volt);
+  color: #0A0A0A;
+}
+
+.contact-social { margin-top: 32px; }
+.contact-social a {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s, border-color 0.2s;
+}
+.contact-social a:hover { color: var(--volt); border-color: var(--volt); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 26px var(--pad-x);
+  border-top: 1px solid var(--line);
+  color: var(--ink-dim);
+  font-size: 0.82rem;
+}
+.site-footer .footer-tag { font-family: var(--font-mono); letter-spacing: 0.08em; }
+
+/* ==========================================================================
    Lightbox
    ========================================================================== */
 
