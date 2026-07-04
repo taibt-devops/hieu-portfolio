@@ -26,6 +26,17 @@ const I18N = {
     "hero.scroll": "CUỘN XUỐNG",
     "marquee.1": "TRUYỀN LỬA",
     "marquee.2": "NĂNG LƯỢNG TÍCH CỰC",
+    "about.km": "CÂU CHUYỆN",
+    "about.title": "Năng lượng là thứ dễ lây lan nhất",
+    "about.p1": "Tôi là Thanh Hiếu — MC và người truyền động lực. Với tôi, mỗi sự kiện là một đường chạy: có vạch xuất phát hồi hộp, những khúc quanh bất ngờ, và khoảnh khắc về đích vỡ òa mà mọi người sẽ nhớ mãi.",
+    "about.p2": "Năng lượng tôi mang lên sân khấu được rèn mỗi ngày trên đường chạy, dưới làn bơi và trên sân pickleball. Thể thao dạy tôi điều quan trọng nhất của nghề dẫn: giữ nhịp — biết lúc nào cần bứt tốc, lúc nào cần lắng lại.",
+    "about.p3": "Tôi tin một chương trình hay không nằm ở kịch bản hoàn hảo, mà ở người dẫn dám cháy hết mình để khán giả cũng muốn cháy theo.",
+    "about.quote": "“Cứ chạy rồi sẽ tới — trên đường đua hay trên sân khấu.”",
+    "stats.km": "CON SỐ BIẾT NÓI",
+    "stats.events": "Sự kiện đã dẫn",
+    "stats.km2": "Kilômét đã chạy",
+    "stats.races": "Giải đã tham gia",
+    "stats.years": "Năm kinh nghiệm",
   },
   en: {
     "logo": "TH.",
@@ -39,6 +50,17 @@ const I18N = {
     "hero.scroll": "SCROLL DOWN",
     "marquee.1": "IGNITE THE CROWD",
     "marquee.2": "POSITIVE ENERGY",
+    "about.km": "THE STORY",
+    "about.title": "Energy is the most contagious thing",
+    "about.p1": "I'm Thanh Hieu — an MC and motivational speaker. To me, every event is a race: a nervous starting line, unexpected turns, and that explosive finish-line moment people remember forever.",
+    "about.p2": "The energy I bring on stage is trained daily — on the running track, in the pool, and on the pickleball court. Sport taught me the most important skill of hosting: pacing — knowing when to sprint and when to slow down.",
+    "about.p3": "I believe a great show isn't about a perfect script. It's about a host who dares to burn bright enough that the audience wants to burn too.",
+    "about.quote": "“Keep running and you'll get there — on the track or on the stage.”",
+    "stats.km": "NUMBERS THAT TALK",
+    "stats.events": "Events hosted",
+    "stats.km2": "Kilometers run",
+    "stats.races": "Races finished",
+    "stats.years": "Years of experience",
   },
 };
 
@@ -81,8 +103,69 @@ function installImageFallbacks() {
   });
 }
 
+/* --- Scroll reveal --------------------------------------------------------- */
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function initReveals() {
+  const items = document.querySelectorAll(".reveal");
+  if (REDUCED_MOTION || !("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.15 }
+  );
+  items.forEach((el, i) => {
+    // stagger siblings that enter together
+    el.style.setProperty("--reveal-delay", (i % 4) * 0.08 + "s");
+    io.observe(el);
+  });
+}
+
+/* --- Stat counters --------------------------------------------------------- */
+function animateCount(el, target) {
+  const duration = 1600;
+  const start = performance.now();
+  const fmt = (n) => n.toLocaleString("vi-VN");
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    el.textContent = fmt(Math.round(target * eased));
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function initCounters() {
+  const nums = document.querySelectorAll("[data-count]");
+  if (REDUCED_MOTION || !("IntersectionObserver" in window)) {
+    nums.forEach((el) => (el.textContent = Number(el.dataset.count).toLocaleString("vi-VN")));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCount(entry.target, Number(entry.target.dataset.count));
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.6 }
+  );
+  nums.forEach((el) => io.observe(el));
+}
+
 /* --- boot ---------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   initLangSwitch();
   installImageFallbacks();
+  initReveals();
+  initCounters();
 });
