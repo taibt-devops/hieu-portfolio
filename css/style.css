@@ -612,13 +612,26 @@ h1, h2, h3 {
    ========================================================================== */
 
 .phone-modal {
+  /* dead-center of the viewport, whatever the scroll position */
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(92vw, 460px);
+  height: fit-content;
   border: 1px solid var(--volt);
   background: var(--surface);
   color: var(--ink);
-  padding: clamp(28px, 5vw, 48px) clamp(32px, 6vw, 64px);
+  padding: clamp(28px, 5vw, 48px) clamp(24px, 5vw, 56px);
   text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 .phone-modal::backdrop { background: rgba(0, 0, 0, 0.85); }
+
+.phone-modal[open] { animation: modal-pop 0.22s ease; }
+@keyframes modal-pop {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
 
 .phone-modal-label {
   font-family: var(--font-mono);
@@ -679,4 +692,5 @@ h1, h2, h3 {
   .marquee-track { animation: none; }
   .scroll-cue-line { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .phone-modal[open] { animation: none; }
 }
