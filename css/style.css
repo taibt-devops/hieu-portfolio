@@ -173,7 +173,7 @@ h1, h2, h3 {
   position: relative;
   min-height: 100svh;
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   isolation: isolate;
 }
 
@@ -193,34 +193,23 @@ h1, h2, h3 {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* diagonal scrims matching the diagonal type layout: dark top-left under
-     the name, dark bottom-right under the tagline, people band left clear */
+  /* bright photos need a real scrim: heavy on the bottom-left where the
+     type sits, easing toward the right so the couple stays visible */
   background:
-    linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.2)),
-    linear-gradient(150deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.3) 38%, rgba(10,10,10,0) 62%),
-    linear-gradient(330deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.35) 34%, rgba(10,10,10,0) 60%);
+    linear-gradient(to top, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.6) 34%, rgba(10,10,10,0.32) 62%, rgba(10,10,10,0.38) 100%),
+    linear-gradient(100deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0) 78%);
 }
 
 .hero-content {
-  /* diagonal composition: name top-left in the sky, roles bottom-right in
-     the flowers — the middle band with the people stays free of type */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 0 var(--pad-x) clamp(96px, 14vh, 150px);
   width: 100%;
-  padding: calc(var(--header-h) + 28px) var(--pad-x) clamp(72px, 10vh, 110px);
-}
-
-.hero-bottom {
-  align-self: flex-end;
-  text-align: right;
 }
 
 .hero-name {
-  /* sized to stay inside the empty sky band above everyone's heads */
-  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  /* poster crop: the name is bigger than the frame wants to allow */
+  font-size: clamp(4.2rem, 17vw, 13rem);
   letter-spacing: 0.01em;
-  margin: 16px 0 0 -0.04em;
+  margin: 18px 0 10px -0.04em;
   text-shadow: 0 6px 40px rgba(0, 0, 0, 0.45); /* lifts type off bright areas */
 }
 
@@ -243,7 +232,7 @@ h1, h2, h3 {
 
 .scroll-cue {
   position: absolute;
-  left: var(--pad-x);
+  right: var(--pad-x);
   bottom: 28px;
   display: flex;
   flex-direction: column;
