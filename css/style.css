@@ -193,23 +193,25 @@ h1, h2, h3 {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* bright photos need a real scrim: heavy on the bottom-left where the
-     type sits, easing toward the right so the subject stays visible */
+  /* bright photos need a real scrim: heavy on the bottom-right where the
+     type sits, easing toward the left so the MC stays visible */
   background:
     linear-gradient(to top, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.6) 34%, rgba(10,10,10,0.32) 62%, rgba(10,10,10,0.38) 100%),
-    linear-gradient(100deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0) 78%);
+    linear-gradient(260deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0) 78%);
 }
 
 .hero-content {
   padding: 0 var(--pad-x) clamp(96px, 14vh, 150px);
   width: 100%;
+  text-align: right; /* type lives over the empty flowers, off the MC at left */
 }
+.hero-content .km-marker { justify-content: flex-end; }
 
 .hero-name {
   /* poster crop: the name is bigger than the frame wants to allow */
   font-size: clamp(4.2rem, 17vw, 13rem);
   letter-spacing: 0.01em;
-  margin: 18px 0 10px -0.04em;
+  margin: 18px -0.04em 10px 0;
   text-shadow: 0 6px 40px rgba(0, 0, 0, 0.45); /* lifts type off bright areas */
 }
 
@@ -224,6 +226,7 @@ h1, h2, h3 {
 .hero-sub {
   margin-top: 14px;
   max-width: 34ch;
+  margin-left: auto;
   color: #D6D6D6;
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
@@ -231,7 +234,7 @@ h1, h2, h3 {
 
 .scroll-cue {
   position: absolute;
-  right: var(--pad-x);
+  left: var(--pad-x);
   bottom: 28px;
   display: flex;
   flex-direction: column;
