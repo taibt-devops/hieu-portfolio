@@ -8,8 +8,7 @@ Lưu ảnh từ Facebook về, đặt **đúng tên file** vào thư mục `imag
 
 | File | Vị trí trên trang | Gợi ý ảnh |
 |---|---|---|
-| `images/hero.jpg` | Màn hình đầu (to nhất, quan trọng nhất) | Ảnh ngang chất lượng cao: đang chạy giải hoặc cầm mic trên sân khấu |
-| `images/hero-mobile.jpg` | Màn hình đầu trên điện thoại | Ảnh dọc (9:16), nhân vật nên đứng lệch phải khung |
+| `images/hero.jpg` | Màn hình đầu (to nhất, quan trọng nhất) | Ảnh dọc (2:3) chất lượng cao, cầm mic trên sân khấu, nhân vật lệch phải khung — dùng chung cho máy tính & điện thoại |
 | `images/portrait.jpg` | Phần "Câu chuyện" | Ảnh chân dung dọc (tỷ lệ 3:4) |
 | `images/sport-run.jpg` | Thẻ Chạy bộ | Ảnh dọc đang chạy |
 | `images/sport-swim.jpg` | Thẻ Bơi lội | Ảnh dọc đang bơi |
