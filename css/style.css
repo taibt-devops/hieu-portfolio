@@ -657,6 +657,18 @@ h1, h2, h3 {
   .site-header { gap: 12px; }
   .lang-switch { margin-left: auto; }
 
+  /* art direction: the portrait crop window slides toward the left of the
+     photo so the MC (at ~28% of image width) lands right-of-center on
+     phones, clear of the name type at bottom-left */
+  .hero-img,
+  .hero .img-fallback { object-position: 8% 62%; }
+  .hero-overlay {
+    -webkit-mask-image: radial-gradient(ellipse 36% 34% at 62% 58%,
+      rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.55) 55%, #000 90%);
+    mask-image: radial-gradient(ellipse 36% 34% at 62% 58%,
+      rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.55) 55%, #000 90%);
+  }
+
   .about { grid-template-columns: 1fr; }
   .about-media { max-width: 420px; }
   .about-media::after { inset: 12px -12px -12px 12px; }
