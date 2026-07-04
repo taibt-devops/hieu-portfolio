@@ -11,6 +11,9 @@ const CONTACT = {
   facebook: "https://www.facebook.com/thanh.hieu.43246",
 };
 
+/* 0364724641 → "0364 724 641" — readable on desktop where tel: can't dial */
+const PHONE_FMT = CONTACT.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+
 /* --- i18n ------------------------------------------------------------------
    Every user-visible string lives here. data-i18n="key" on the element. --- */
 const I18N = {
@@ -60,7 +63,7 @@ const I18N = {
     "contact.title1": "Cùng tạo nên một sự kiện",
     "contact.title2": "bùng nổ?",
     "contact.sub": "Nhắn tôi một tin — chúng ta sẽ bắt đầu từ ý tưởng của bạn.",
-    "contact.call": "Gọi điện",
+    "contact.call": "Gọi " + PHONE_FMT,
     "footer.tag": "Cứ chạy rồi sẽ tới.",
   },
   en: {
@@ -109,7 +112,7 @@ const I18N = {
     "contact.title1": "Let's create an event that",
     "contact.title2": "explodes?",
     "contact.sub": "Send me a message — we'll start from your idea.",
-    "contact.call": "Call me",
+    "contact.call": "Call " + PHONE_FMT,
     "footer.tag": "Keep running, you'll get there.",
   },
 };
