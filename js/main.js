@@ -4,10 +4,10 @@
 
 /* --- Contact placeholders: replace these once, everything updates --------- */
 const CONTACT = {
-  phone: "0900000000",                              // ← thay số điện thoại thật
-  zalo: "0900000000",                               // ← thay số Zalo thật
+  phone: "0364724641",
+  zalo: "0364724641",
   messenger: "https://m.me/thanh.hieu.43246",
-  email: "hello@thanhhieu.vn",                      // ← thay email thật
+  email: "buihieu050898@gmail.com",
   facebook: "https://www.facebook.com/thanh.hieu.43246",
 };
 
