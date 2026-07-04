@@ -435,13 +435,21 @@ h1, h2, h3 {
    Gallery — KM 30
    ========================================================================== */
 
+/* lead shot: shown complete at its natural ratio, never cropped */
+.gallery-lead {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+.gallery-lead img { width: 100%; height: auto; }
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: clamp(140px, 22vw, 260px);
   grid-auto-flow: dense;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .gallery-item {
