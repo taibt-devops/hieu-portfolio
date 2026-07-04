@@ -590,6 +590,42 @@ h1, h2, h3 {
 .lightbox-close:hover { color: var(--volt); }
 
 /* ==========================================================================
+   Phone modal — desktop fallback for the call button
+   ========================================================================== */
+
+.phone-modal {
+  border: 1px solid var(--volt);
+  background: var(--surface);
+  color: var(--ink);
+  padding: clamp(28px, 5vw, 48px) clamp(32px, 6vw, 64px);
+  text-align: center;
+}
+.phone-modal::backdrop { background: rgba(0, 0, 0, 0.85); }
+
+.phone-modal-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.phone-modal-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  color: var(--volt);
+  margin: 14px 0 24px;
+  user-select: all; /* one click selects the whole number */
+}
+
+.phone-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
    Responsive + reduced motion
    ========================================================================== */
 

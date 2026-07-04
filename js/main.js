@@ -63,7 +63,11 @@ const I18N = {
     "contact.title1": "Cùng tạo nên một sự kiện",
     "contact.title2": "bùng nổ?",
     "contact.sub": "Nhắn tôi một tin — chúng ta sẽ bắt đầu từ ý tưởng của bạn.",
-    "contact.call": "Gọi " + PHONE_FMT,
+    "contact.call": "Gọi điện",
+    "phone.title": "Gọi cho tôi",
+    "phone.copy": "Sao chép số",
+    "phone.copied": "Đã sao chép ✓",
+    "phone.close": "Đóng",
     "footer.tag": "Cứ chạy rồi sẽ tới.",
   },
   en: {
@@ -112,7 +116,11 @@ const I18N = {
     "contact.title1": "Let's create an event that",
     "contact.title2": "explodes?",
     "contact.sub": "Send me a message — we'll start from your idea.",
-    "contact.call": "Call " + PHONE_FMT,
+    "contact.call": "Call me",
+    "phone.title": "Call me at",
+    "phone.copy": "Copy number",
+    "phone.copied": "Copied ✓",
+    "phone.close": "Close",
     "footer.tag": "Keep running, you'll get there.",
   },
 };
@@ -287,6 +295,7 @@ function initContactLinks() {
     if (el) el.href = href;
   };
   set("btn-phone", "tel:" + CONTACT.phone);
+  initPhoneModal();
   set("btn-zalo", "https://zalo.me/" + CONTACT.zalo);
   set("btn-messenger", CONTACT.messenger);
   set("btn-email", "mailto:" + CONTACT.email);
@@ -294,6 +303,53 @@ function initContactLinks() {
 
   const year = document.getElementById("footer-year");
   if (year) year.textContent = new Date().getFullYear();
+}
+
+/* --- Phone modal -------------------------------------------------------------
+   Phones dial via tel: directly. Desktops have no dialer, so intercept the
+   click and show the number in a copyable popup instead of the OS app picker. */
+function initPhoneModal() {
+  const btn = document.getElementById("btn-phone");
+  const modal = document.getElementById("phone-modal");
+  if (!btn || !modal || typeof modal.showModal !== "function") return;
+
+  const isPhoneDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isPhoneDevice) return; // keep native one-tap dialing
+
+  modal.querySelector("#phone-modal-number").textContent = PHONE_FMT;
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.showModal();
+  });
+
+  modal.querySelector("#phone-close").addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.close(); // backdrop click
+  });
+
+  const copyBtn = modal.querySelector("#phone-copy");
+  copyBtn.addEventListener("click", () => {
+    const lang = document.documentElement.lang || "vi";
+    const done = () => {
+      copyBtn.textContent = I18N[lang]["phone.copied"];
+      setTimeout(() => (copyBtn.textContent = I18N[lang]["phone.copy"]), 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(CONTACT.phone).then(done, () => selectNumber());
+    } else {
+      selectNumber();
+    }
+  });
+
+  function selectNumber() {
+    // clipboard API unavailable (e.g. some file:// contexts) — select for manual copy
+    const range = document.createRange();
+    range.selectNodeContents(modal.querySelector("#phone-modal-number"));
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
 }
 
 /* --- boot ---------------------------------------------------------------- */
