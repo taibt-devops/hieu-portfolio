@@ -193,8 +193,11 @@ h1, h2, h3 {
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* bright photos need a real scrim: heavy on the bottom-left where the
+     type sits, easing toward the right so the subject stays visible */
   background:
-    linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.35) 45%, rgba(10,10,10,0.25) 100%);
+    linear-gradient(to top, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.6) 34%, rgba(10,10,10,0.32) 62%, rgba(10,10,10,0.38) 100%),
+    linear-gradient(100deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.32) 48%, rgba(10,10,10,0) 78%);
 }
 
 .hero-content {
@@ -207,6 +210,7 @@ h1, h2, h3 {
   font-size: clamp(4.2rem, 17vw, 13rem);
   letter-spacing: 0.01em;
   margin: 18px 0 10px -0.04em;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, 0.45); /* lifts type off bright areas */
 }
 
 .hero-roles {
@@ -220,8 +224,9 @@ h1, h2, h3 {
 .hero-sub {
   margin-top: 14px;
   max-width: 34ch;
-  color: var(--ink-dim);
+  color: #D6D6D6;
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 
 .scroll-cue {
