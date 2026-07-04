@@ -13,7 +13,7 @@ Lưu ảnh từ Facebook về, đặt **đúng tên file** vào thư mục `imag
 | `images/sport-run.jpg` | Thẻ Chạy bộ | Ảnh dọc đang chạy |
 | `images/sport-swim.jpg` | Thẻ Bơi lội | Ảnh dọc đang bơi |
 | `images/sport-pickleball.jpg` | Thẻ Pickleball | Ảnh dọc trên sân |
-| `images/gallery-1.jpg` → `gallery-6.jpg` | Lưới Khoảnh khắc | 6 ảnh đẹp nhất: sân khấu, giải chạy, đời thường (số 1 và 6 là ô to) |
+| `images/gallery-1.jpg` → `gallery-5.jpg` | Mục Khoảnh khắc | Số 1 là ảnh mở màn full-width (hiển thị trọn không cắt); 2–5 là hàng 4 ô đều nhau |
 
 Mẹo: ảnh nên nén dưới ~500KB/tấm (dùng [squoosh.app](https://squoosh.app)) để trang tải nhanh.
 
