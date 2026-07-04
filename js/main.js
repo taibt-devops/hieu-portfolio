@@ -37,6 +37,16 @@ const I18N = {
     "stats.km2": "Kilômét đã chạy",
     "stats.races": "Giải đã tham gia",
     "stats.years": "Năm kinh nghiệm",
+    "passions.km": "BA ĐAM MÊ",
+    "passions.title": "Thể thao là phòng gym của tinh thần",
+    "passions.run.title": "Chạy bộ",
+    "passions.run.desc": "Nơi rèn sức bền và kỷ luật — từ những buổi chạy 5 giờ sáng đến vạch đích các giải half-marathon.",
+    "passions.swim.title": "Bơi lội",
+    "passions.swim.desc": "Nơi học cách thở, giữ bình tĩnh và kiểm soát nhịp — kỹ năng sống còn của người cầm mic.",
+    "passions.pickle.title": "Pickleball",
+    "passions.pickle.desc": "Nơi phản xạ nhanh gặp niềm vui kết nối — môn thể thao của những cuộc gặp gỡ mới.",
+    "gallery.km": "KHOẢNH KHẮC",
+    "gallery.title": "Những khung hình đáng nhớ",
   },
   en: {
     "logo": "TH.",
@@ -61,6 +71,16 @@ const I18N = {
     "stats.km2": "Kilometers run",
     "stats.races": "Races finished",
     "stats.years": "Years of experience",
+    "passions.km": "THREE PASSIONS",
+    "passions.title": "Sport is the gym of the mind",
+    "passions.run.title": "Running",
+    "passions.run.desc": "Where endurance and discipline are forged — from 5 AM runs to half-marathon finish lines.",
+    "passions.swim.title": "Swimming",
+    "passions.swim.desc": "Where I learned to breathe, stay calm and control the rhythm — survival skills for anyone holding a mic.",
+    "passions.pickle.title": "Pickleball",
+    "passions.pickle.desc": "Where fast reflexes meet the joy of connection — the sport of new friendships.",
+    "gallery.km": "MOMENTS",
+    "gallery.title": "Frames worth remembering",
   },
 };
 
@@ -162,10 +182,34 @@ function initCounters() {
   nums.forEach((el) => io.observe(el));
 }
 
+/* --- Lightbox --------------------------------------------------------------
+   Opens only for real photos; placeholder tiles stay inert. */
+function initLightbox() {
+  const box = document.getElementById("lightbox");
+  if (!box || typeof box.showModal !== "function") return;
+  const boxImg = box.querySelector(".lightbox-img");
+
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const img = item.querySelector("img");
+      if (!img) return; // placeholder tile — nothing to enlarge
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      box.showModal();
+    });
+  });
+
+  box.querySelector(".lightbox-close").addEventListener("click", () => box.close());
+  box.addEventListener("click", (e) => {
+    if (e.target === box) box.close(); // backdrop click
+  });
+}
+
 /* --- boot ---------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   initLangSwitch();
   installImageFallbacks();
   initReveals();
   initCounters();
+  initLightbox();
 });
