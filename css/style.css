@@ -945,3 +945,13 @@ h1, h2, h3 {
   .stage { grid-template-columns: 1fr; gap: 12px; }
   .stage::before { display: none; }
 }
+
+.plan-extra {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--volt);
+}

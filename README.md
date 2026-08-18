@@ -58,18 +58,24 @@ Toàn bộ chữ (cả tiếng Việt và tiếng Anh) nằm trong hai file từ
 `js/i18n-mc.js` cho trang MC, `js/i18n-teaching.js` cho trang gia sư.
 Sửa một chỗ, cả trang cập nhật.
 
-## 4b. Trang gia sư — những chỗ BẮT BUỘC phải điền
+## 4b. Trang gia sư — học phí
 
-Mở `js/i18n-teaching.js`, tìm các chỗ còn dấu ngoặc vuông. **Đừng đăng trang
-khi vẫn còn dấu `[ ]`:**
+Đã điền sẵn, muốn đổi thì sửa trong `js/i18n-teaching.js` (nhớ sửa **cả hai** bản
+`vi` và `en`):
 
-| Chỗ cần điền | Khoá trong file |
-|---|---|
-| Học phí 1 kèm 1 | `pricing.2.price` (và bản EN) |
-| Học phí nhóm nhỏ | `pricing.3.price` (và bản EN) |
-| Khu vực dạy trực tiếp | `pricing.note` (và bản EN) |
+| | Giá | Khoá |
+|---|---|---|
+| Buổi thử 45 phút | Miễn phí | `pricing.1.price` |
+| 1 kèm 1, 90 phút | 300.000đ · gói 8 buổi 2.200.000đ | `pricing.2.price`, `pricing.2.extra` |
+| Nhóm 2–4, 90 phút | 150.000đ/người · gói 8 buổi 1.100.000đ | `pricing.3.price`, `pricing.3.extra` |
+
+Nếu đổi giá, sửa luôn khối JSON-LD ở đầu `teaching.html` (phần `offers`) để Google
+không đọc ra giá cũ.
 
 ## 4c. Gắn video "nghe tôi nói thử" — việc quan trọng nhất
+
+> **Kịch bản quay đầy đủ nằm ở [docs/kich-ban-video.md](docs/kich-ban-video.md)** —
+> 90 giây, chia sẵn từng mốc thời gian, kèm cách đặt máy, ánh sáng, tiếng.
 
 Trang gia sư đang có một ô gạch chéo chờ video. Không có chứng chỉ thì **video
 chính là thứ thay thế**: người ta nghe 90 giây là biết bạn nói được hay không,
