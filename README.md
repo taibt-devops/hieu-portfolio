@@ -14,13 +14,17 @@ HTML/CSS/JS thuần, không cần cài đặt gì, mở file là chạy.
 Cấu trúc file:
 
 ```
-index.html       trang MC
-teaching.html    trang gia sư tiếng Anh
-css/style.css    dùng chung cả hai trang
-js/site.js       hành vi dùng chung (menu, đổi ngôn ngữ, hiệu ứng, nút liên hệ)
-js/i18n-mc.js         chữ của trang MC
-js/i18n-teaching.js   chữ của trang gia sư
+index.html        trang MC (nền đen, sân khấu)
+teaching.html     trang gia sư — dạng "bản ghi cuộc trò chuyện" trên nền giấy
+css/style.css     chỉ cho trang MC
+css/teaching.css  chỉ cho trang gia sư
+js/site.js        hành vi dùng chung (hiệu ứng cuộn, nút liên hệ, popup gọi điện)
+js/i18n-mc.js     chữ của trang MC (VI + EN)
 ```
+
+Trang gia sư KHÔNG có nút VI/EN — bản ghi cố ý trộn hai thứ tiếng, kèm dòng
+dịch nhỏ dưới câu tiếng Anh, vì chính điều đó là hàng mẫu của sản phẩm.
+Toàn bộ chữ của trang gia sư nằm thẳng trong `teaching.html`.
 
 Số điện thoại / Zalo / email nằm ở khối `CONTACT` đầu file `js/site.js` — sửa
 một chỗ là cả hai trang cùng đổi.
@@ -54,23 +58,14 @@ Mở `index.html`, tìm `data-count` — sửa 4 con số: sự kiện đã dẫ
 
 ## 4. Sửa chữ / nội dung
 
-Toàn bộ chữ (cả tiếng Việt và tiếng Anh) nằm trong hai file từ điển:
-`js/i18n-mc.js` cho trang MC, `js/i18n-teaching.js` cho trang gia sư.
-Sửa một chỗ, cả trang cập nhật.
+Trang MC: toàn bộ chữ (VI + EN) nằm trong từ điển `js/i18n-mc.js` — sửa một
+chỗ, cả trang cập nhật. Trang gia sư: chữ nằm thẳng trong `teaching.html`.
 
 ## 4b. Trang gia sư — học phí
 
-Đã điền sẵn, muốn đổi thì sửa trong `js/i18n-teaching.js` (nhớ sửa **cả hai** bản
-`vi` và `en`):
-
-| | Giá | Khoá |
-|---|---|---|
-| Buổi thử 45 phút | Miễn phí | `pricing.1.price` |
-| 1 kèm 1, 90 phút | 300.000đ · gói 8 buổi 2.200.000đ | `pricing.2.price`, `pricing.2.extra` |
-| Nhóm 2–4, 90 phút | 150.000đ/người · gói 8 buổi 1.100.000đ | `pricing.3.price`, `pricing.3.extra` |
-
-Nếu đổi giá, sửa luôn khối JSON-LD ở đầu `teaching.html` (phần `offers`) để Google
-không đọc ra giá cũ.
+Bảng giá nằm trong `teaching.html`, khối `<div class="pricecard">` (tìm chữ
+`300.000`). Nếu đổi giá, sửa luôn khối JSON-LD ở đầu file (phần `offers`) để
+Google không đọc ra giá cũ.
 
 ## 4c. Gắn video "nghe tôi nói thử" — việc quan trọng nhất
 
@@ -95,12 +90,8 @@ thay cả khối `<div class="video-slot">...</div>` bằng:
 </div>
 ```
 
-và thêm vào cuối `css/style.css`:
-
-```css
-.video-frame { aspect-ratio: 16 / 9; max-width: 860px; border: 1px solid var(--line); }
-.video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-```
+Khung `.video-frame` đã có sẵn trong `css/teaching.css` — chỉ cần thay khối
+HTML là xong, không phải thêm CSS.
 
 ## 5. Đưa lên mạng (miễn phí)
 
