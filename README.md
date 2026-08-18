@@ -1,6 +1,29 @@
-# Thanh Hiếu — MC · Speaker · Ironman
+# Thanh Hiếu — MC · Gia sư tiếng Anh
 
-Trang profile cá nhân một trang: HTML/CSS/JS thuần, không cần cài đặt gì, mở `index.html` là chạy.
+HTML/CSS/JS thuần, không cần cài đặt gì, mở file là chạy.
+
+**Hai trang, dùng chung một bộ code:**
+
+| Trang | Dành cho | Gửi link này khi |
+|---|---|---|
+| `index.html` | Khách thuê MC đám cưới / sự kiện | Ai đó hỏi thuê MC |
+| `teaching.html` | Học viên muốn học tiếng Anh giao tiếp | Ai đó hỏi học tiếng Anh |
+
+Đừng gửi nhầm link — hai nhóm người này quan tâm hai thứ hoàn toàn khác nhau.
+
+Cấu trúc file:
+
+```
+index.html       trang MC
+teaching.html    trang gia sư tiếng Anh
+css/style.css    dùng chung cả hai trang
+js/site.js       hành vi dùng chung (menu, đổi ngôn ngữ, hiệu ứng, nút liên hệ)
+js/i18n-mc.js         chữ của trang MC
+js/i18n-teaching.js   chữ của trang gia sư
+```
+
+Số điện thoại / Zalo / email nằm ở khối `CONTACT` đầu file `js/site.js` — sửa
+một chỗ là cả hai trang cùng đổi.
 
 ## 1. Thay ảnh thật
 
@@ -22,7 +45,8 @@ Mẹo: ảnh nên nén dưới ~500KB/tấm (dùng [squoosh.app](https://squoosh
 
 ## 2. Thay thông tin liên hệ
 
-Mở `js/main.js`, sửa khối `CONTACT` ngay đầu file (số điện thoại, Zalo, email).
+Mở `js/site.js`, sửa khối `CONTACT` ngay đầu file (số điện thoại, Zalo, email).
+Áp dụng cho cả hai trang.
 
 ## 3. Thay số liệu thành tích
 
@@ -30,7 +54,47 @@ Mở `index.html`, tìm `data-count` — sửa 4 con số: sự kiện đã dẫ
 
 ## 4. Sửa chữ / nội dung
 
-Toàn bộ chữ (cả tiếng Việt và tiếng Anh) nằm trong từ điển `I18N` ở `js/main.js`. Sửa một chỗ, cả trang cập nhật.
+Toàn bộ chữ (cả tiếng Việt và tiếng Anh) nằm trong hai file từ điển:
+`js/i18n-mc.js` cho trang MC, `js/i18n-teaching.js` cho trang gia sư.
+Sửa một chỗ, cả trang cập nhật.
+
+## 4b. Trang gia sư — những chỗ BẮT BUỘC phải điền
+
+Mở `js/i18n-teaching.js`, tìm các chỗ còn dấu ngoặc vuông. **Đừng đăng trang
+khi vẫn còn dấu `[ ]`:**
+
+| Chỗ cần điền | Khoá trong file |
+|---|---|
+| Học phí 1 kèm 1 | `pricing.2.price` (và bản EN) |
+| Học phí nhóm nhỏ | `pricing.3.price` (và bản EN) |
+| Khu vực dạy trực tiếp | `pricing.note` (và bản EN) |
+
+## 4c. Gắn video "nghe tôi nói thử" — việc quan trọng nhất
+
+Trang gia sư đang có một ô gạch chéo chờ video. Không có chứng chỉ thì **video
+chính là thứ thay thế**: người ta nghe 90 giây là biết bạn nói được hay không,
+không cần tin lời quảng cáo.
+
+Quay bằng điện thoại cũng được. Nội dung gợi ý: tự giới thiệu, kể một chuyện
+ngắn, trả lời một câu hỏi ngẫu nhiên — quay một lần, **không cắt ghép** (chính
+chỗ "không cắt ghép" mới là bằng chứng).
+
+Up lên YouTube (để chế độ *Không công khai* cũng được), rồi trong `teaching.html`
+thay cả khối `<div class="video-slot">...</div>` bằng:
+
+```html
+<div class="video-frame reveal">
+  <iframe src="https://www.youtube.com/embed/MA-VIDEO-CUA-BAN"
+          title="Thanh Hiếu nói tiếng Anh" allowfullscreen loading="lazy"></iframe>
+</div>
+```
+
+và thêm vào cuối `css/style.css`:
+
+```css
+.video-frame { aspect-ratio: 16 / 9; max-width: 860px; border: 1px solid var(--line); }
+.video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+```
 
 ## 5. Đưa lên mạng (miễn phí)
 
