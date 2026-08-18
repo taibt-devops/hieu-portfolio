@@ -7,12 +7,35 @@
   <meta name="description" content="Thanh Hiếu — MC đám cưới &amp; sự kiện song ngữ Việt–Anh, diễn giả truyền động lực. Năng lượng tích cực từ sân khấu đến đường chạy: chạy bộ, bơi lội, pickleball.">
   <meta property="og:title" content="Thanh Hiếu — MC Song Ngữ · Speaker · Ironman">
   <meta property="og:description" content="Người truyền động lực trên sân khấu và trên đường chạy.">
-  <meta property="og:image" content="images/hero.jpg">
+  <!-- ĐỔI TÊN MIỀN: og:image phải là URL tuyệt đối, nếu không Facebook/Zalo không lấy được ảnh -->
+  <meta property="og:image" content="https://DOI-TEN-MIEN-CUA-BAN.com/images/hero.jpg">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="2400">
+  <meta property="og:url" content="https://DOI-TEN-MIEN-CUA-BAN.com/">
   <meta property="og:type" content="profile">
+  <meta property="og:locale" content="vi_VN">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='23' font-family='Arial Narrow,Arial,sans-serif' font-weight='700' font-size='19' fill='%23C8FF00' text-anchor='middle'%3ETH%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Bùi Thanh Hiếu",
+    "alternateName": "MC Thanh Hiếu",
+    "jobTitle": "MC song ngữ Việt–Anh · Diễn giả truyền động lực",
+    "description": "MC đám cưới và sự kiện song ngữ Việt–Anh, diễn giả truyền động lực, host giải chạy.",
+    "image": "https://DOI-TEN-MIEN-CUA-BAN.com/images/hero.jpg",
+    "url": "https://DOI-TEN-MIEN-CUA-BAN.com/",
+    "telephone": "+84364724641",
+    "email": "buihieu050898@gmail.com",
+    "knowsLanguage": ["vi", "en"],
+    "sameAs": ["https://www.facebook.com/thanh.hieu.43246"]
+  }
+  </script>
 </head>
 <body>
 
@@ -35,7 +58,8 @@
 
     <!-- KM 00 · HERO -->
     <section class="hero" id="home">
-      <img class="hero-img" src="images/hero.jpg" alt="MC đám cưới Thanh Hiếu dẫn dắt lễ cưới ngoài trời bên biển" data-fallback="images/hero.jpg">
+      <img class="hero-img" src="images/hero.jpg" width="1600" height="2400" fetchpriority="high"
+           alt="MC Thanh Hiếu cầm mic dẫn lễ cưới ngoài trời bên biển, bên cổng hoa trắng" data-fallback="images/hero.jpg">
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="km-marker"><span class="km-num">KM 00</span><span class="km-label" data-i18n="hero.km">VẠCH XUẤT PHÁT</span></p>
@@ -70,7 +94,8 @@
     <!-- KM 05 · ABOUT -->
     <section class="about section" id="about">
       <div class="about-media reveal">
-        <img src="images/portrait.jpg" alt="Chân dung Thanh Hiếu" data-fallback="images/portrait.jpg">
+        <img src="images/portrait.jpg" width="682" height="1024" loading="lazy"
+             alt="MC Thanh Hiếu giơ tay cầm mic dưới ánh đèn sân khấu trong tiệc cưới" data-fallback="images/portrait.jpg">
       </div>
       <div class="about-body">
         <p class="km-marker reveal"><span class="km-num">KM 05</span><span class="km-label" data-i18n="about.km">CÂU CHUYỆN</span></p>
@@ -111,34 +136,40 @@
     <section class="passions section" id="passions">
       <p class="km-marker reveal"><span class="km-num">KM 21</span><span class="km-label" data-i18n="passions.km">BA ĐAM MÊ</span></p>
       <h2 class="section-title reveal" data-i18n="passions.title">Thể thao là phòng gym của tinh thần</h2>
-      <div class="passions-grid">
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="images/sport-run.jpg" alt="Thanh Hiếu chạy bộ" data-fallback="images/sport-run.jpg">
-          </div>
-          <div class="card-body">
-            <h3 data-i18n="passions.run.title">Chạy bộ</h3>
-            <p data-i18n="passions.run.desc">Nơi rèn sức bền và kỷ luật — từ những buổi chạy 5 giờ sáng đến vạch đích các giải half-marathon.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="images/sport-swim.jpg" alt="Thanh Hiếu bơi lội" data-fallback="images/sport-swim.jpg">
-          </div>
-          <div class="card-body">
-            <h3 data-i18n="passions.swim.title">Bơi lội</h3>
-            <p data-i18n="passions.swim.desc">Nơi học cách thở, giữ bình tĩnh và kiểm soát nhịp — kỹ năng sống còn của người cầm mic.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media">
-            <img src="images/sport-pickleball.jpg" alt="Thanh Hiếu chơi pickleball" data-fallback="images/sport-pickleball.jpg">
-          </div>
-          <div class="card-body">
-            <h3 data-i18n="passions.pickle.title">Pickleball</h3>
-            <p data-i18n="passions.pickle.desc">Nơi phản xạ nhanh gặp niềm vui kết nối — môn thể thao của những cuộc gặp gỡ mới.</p>
-          </div>
-        </article>
+      <div class="passions-layout">
+        <figure class="passions-photo reveal">
+          <img src="images/sport-run.jpg" width="796" height="1036" loading="lazy"
+               alt="Thanh Hiếu về đích giải bán marathon 21km, hai tay dang rộng, số báo danh 61059">
+        </figure>
+        <div class="passions-body">
+          <ol class="passion-list">
+            <li class="passion reveal">
+              <span class="passion-idx" aria-hidden="true">01</span>
+              <div>
+                <h3 data-i18n="passions.run.title">Chạy bộ</h3>
+                <p data-i18n="passions.run.desc">Nơi rèn sức bền và kỷ luật — từ những buổi chạy 5 giờ sáng đến vạch đích các giải half-marathon.</p>
+              </div>
+            </li>
+            <li class="passion reveal">
+              <span class="passion-idx" aria-hidden="true">02</span>
+              <div>
+                <h3 data-i18n="passions.swim.title">Bơi lội</h3>
+                <p data-i18n="passions.swim.desc">Nơi học cách thở, giữ bình tĩnh và kiểm soát nhịp — kỹ năng sống còn của người cầm mic.</p>
+              </div>
+            </li>
+            <li class="passion reveal">
+              <span class="passion-idx" aria-hidden="true">03</span>
+              <div>
+                <h3 data-i18n="passions.pickle.title">Pickleball</h3>
+                <p data-i18n="passions.pickle.desc">Nơi phản xạ nhanh gặp niềm vui kết nối — môn thể thao của những cuộc gặp gỡ mới.</p>
+              </div>
+            </li>
+          </ol>
+          <figure class="passions-strip reveal">
+            <img src="images/sport-swim.jpg" width="1200" height="800" loading="lazy"
+                 alt="Thanh Hiếu lên bờ sau phần thi bơi biển tại một giải ba môn phối hợp">
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -146,21 +177,14 @@
     <section class="gallery section" id="gallery">
       <p class="km-marker reveal"><span class="km-num">KM 30</span><span class="km-label" data-i18n="gallery.km">KHOẢNH KHẮC</span></p>
       <h2 class="section-title reveal" data-i18n="gallery.title">Những khung hình đáng nhớ</h2>
-      <button class="gallery-item gallery-lead reveal" type="button">
-        <img src="images/gallery-1.jpg" alt="Khoảnh khắc 1" data-fallback="images/gallery-1.jpg">
-      </button>
-      <div class="gallery-grid">
+      <div class="gallery-pair">
         <button class="gallery-item reveal" type="button">
-          <img src="images/gallery-2.jpg" alt="Khoảnh khắc 2" data-fallback="images/gallery-2.jpg">
+          <img src="images/moment-crowd.jpg" width="2048" height="1363" loading="lazy"
+               alt="MC Thanh Hiếu cầm mic đi giữa bàn tiệc, khách giơ tay tham gia trò chơi trong tiệc cưới ngoài trời buổi tối">
         </button>
         <button class="gallery-item reveal" type="button">
-          <img src="images/gallery-3.jpg" alt="Khoảnh khắc 3" data-fallback="images/gallery-3.jpg">
-        </button>
-        <button class="gallery-item reveal" type="button">
-          <img src="images/gallery-4.jpg" alt="Khoảnh khắc 4" data-fallback="images/gallery-4.jpg">
-        </button>
-        <button class="gallery-item reveal" type="button">
-          <img src="images/gallery-5.jpg" alt="Khoảnh khắc 5" data-fallback="images/gallery-5.jpg">
+          <img src="images/moment-ceremony.jpg" width="2048" height="1366" loading="lazy"
+               alt="MC Thanh Hiếu xem lại kịch bản trước cổng hoa trong lễ cưới bên biển">
         </button>
       </div>
     </section>

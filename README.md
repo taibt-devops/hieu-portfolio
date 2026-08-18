@@ -8,12 +8,15 @@ Lưu ảnh từ Facebook về, đặt **đúng tên file** vào thư mục `imag
 
 | File | Vị trí trên trang | Gợi ý ảnh |
 |---|---|---|
-| `images/hero.jpg` | Màn hình đầu (to nhất, quan trọng nhất) | Ảnh dọc (2:3) chất lượng cao, cầm mic trên sân khấu, nhân vật lệch phải khung — dùng chung cho máy tính & điện thoại |
+| `images/hero.jpg` | Màn hình đầu (to nhất, quan trọng nhất) | Ảnh dọc (2:3) chất lượng cao, cầm mic, **nhìn thẳng ống kính**, nhân vật lệch phải khung — dùng chung cho máy tính & điện thoại |
 | `images/portrait.jpg` | Phần "Câu chuyện" | Ảnh chân dung dọc (tỷ lệ 3:4) |
-| `images/sport-run.jpg` | Thẻ Chạy bộ | Ảnh dọc đang chạy |
-| `images/sport-swim.jpg` | Thẻ Bơi lội | Ảnh dọc đang bơi |
-| `images/sport-pickleball.jpg` | Thẻ Pickleball | Ảnh dọc trên sân |
-| `images/gallery-1.jpg` → `gallery-5.jpg` | Mục Khoảnh khắc | Số 1 là ảnh mở màn full-width (hiển thị trọn không cắt); 2–5 là hàng 4 ô đều nhau |
+| `images/sport-run.jpg` | Mục "Đam mê", ảnh dọc bên trái | Ảnh dọc đang chạy (3:4). **Không dùng ảnh có watermark của bên thứ ba** |
+| `images/sport-swim.jpg` | Mục "Đam mê", dải ngang dưới danh sách | Ảnh ngang, nhân vật ở giữa (bị cắt còn 16:6) |
+| `images/moment-crowd.jpg` | "Khoảnh khắc", ô trái | Ảnh ngang 3:2 — đang dẫn, có khán giả trong khung |
+| `images/moment-ceremony.jpg` | "Khoảnh khắc", ô phải | Ảnh ngang 3:2 — bối cảnh sự kiện |
+
+Thư mục `images/unused/` chứa các ảnh đã gỡ khỏi trang (mờ, lạc đề, hoặc nhân vật
+chính không phải MC). Giữ lại để đối chiếu — xoá lúc nào cũng được.
 
 Mẹo: ảnh nên nén dưới ~500KB/tấm (dùng [squoosh.app](https://squoosh.app)) để trang tải nhanh.
 
@@ -37,4 +40,6 @@ Chọn một trong ba:
 - **Vercel**: cài [Vercel CLI](https://vercel.com/docs/cli) rồi chạy `vercel` trong thư mục này.
 - **GitHub Pages**: đẩy repo lên GitHub → Settings → Pages → chọn branch → Save.
 
-Sau khi có tên miền, cập nhật thẻ `og:image` trong `index.html` thành URL tuyệt đối (ví dụ `https://tenmien.com/images/hero.jpg`) để ảnh hiện đẹp khi chia sẻ lên Facebook.
+Sau khi có tên miền, mở `index.html` và thay **tất cả** chỗ ghi `DOI-TEN-MIEN-CUA-BAN.com`
+bằng tên miền thật (có 4 chỗ: `og:image`, `og:url`, và 2 chỗ trong khối JSON-LD ở cuối `<head>`).
+Chưa thay thì Facebook/Zalo sẽ không hiện ảnh khi chia sẻ link.
