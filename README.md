@@ -3,12 +3,12 @@
 HTML/CSS/JS thuần, không cần cài đặt gì, mở file là chạy.
 
 **Repo này chỉ còn trang MC.** Trang gia sư tiếng Anh đã tách sang repo riêng
-`speakhieu` để gắn tên miền riêng:
+`teaching-speakhieu` để gắn tên miền riêng:
 
 | Trang | Repo | Tên miền dự kiến |
 |---|---|---|
 | MC đám cưới / sự kiện | `hieu-portfolio` (repo này) | `mc.speakhieu.pro` |
-| Gia sư tiếng Anh | `speakhieu` | `teaching.speakhieu.pro` |
+| Gia sư tiếng Anh | `teaching-speakhieu` | `teaching.speakhieu.pro` |
 
 Cấu trúc file:
 
@@ -20,7 +20,7 @@ js/i18n-mc.js    toàn bộ chữ VI + EN
 ```
 
 Số điện thoại / Zalo / email nằm ở khối `CONTACT` đầu `js/site.js`.
-Lưu ý: repo `speakhieu` có bản `site.js` riêng — đổi số thì sửa cả hai repo.
+Lưu ý: repo `teaching-speakhieu` có bản `site.js` riêng — đổi số thì sửa cả hai repo.
 
 ## 1. Thay ảnh thật
 
