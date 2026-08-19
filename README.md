@@ -20,9 +20,8 @@ js/site.js       hành vi (hiệu ứng cuộn, nút liên hệ, popup gọi đi
 js/i18n-mc.js    toàn bộ chữ VI + EN
 ```
 
-**CV còn 2 chỗ `[NĂM]`** cần điền (khoá đào tạo giáo viên NGO và năm dạy tình
-nguyện) — mở `cv/index.html`, tìm `[NĂM]`. Sửa số liệu thì nhớ sửa cả 4 ô
-trong dải thống kê lẫn phần Experience cho khớp trang MC.
+Sửa số liệu trong CV thì nhớ sửa **cả hai chỗ**: 4 ô ở dải thống kê đầu trang
+và phần Experience bên dưới — và giữ cho khớp với trang MC.
 
 Số điện thoại / Zalo / email nằm ở khối `CONTACT` đầu `js/site.js`.
 Lưu ý: repo `teaching-speakhieu` có bản `site.js` riêng — đổi số thì sửa cả hai repo.
